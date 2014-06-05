@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Groceroo: Social Grocery Shopping!</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css">
+		<link rel="stylesheet" type="text/css" href="css/friends.css">
+		<link rel="stylesheet" type="text/css" href="css/docs.css">
+		<link rel="stylesheet" type="text/css" href="css/ui.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	</head>
+
+    <body>
+    	<div><img id="back" src="groceries4-2.jpg"></div>
+	
+	<nav id="navibar" class="pretty navbar">
+  		<h1 class="logo"><a href="home.html"><img id="logo" src="logo.png"></a></h1>
+  		<ul>
+		    <li><a href="home.html">Home</a></li>
+		    <li><a class="navbar-active" href="friends.html">Friends</a></li>
+		    <li><a href="calendar.html">Calendar</a></li>
+		    <li><a href="finddeals.html">Find Deals</a></li>
+		    <div id="user"><img src="Hong.jpg" class="img-rounded" id="hong"><a href="index.html">Hong Le</a></div>
+  		</ul>
+	</nav>
+
+		<!-- Script for searchbox mock -->
+		<script>
+		function searchSuggest(str){
+			var testURL = "google.com";
+			var numResults=0; //keeps track of how many results found; for now triman is setting manually to set stuff
+			var a;
+			var b;
+			var c;
+			var d;
+			var e;
+			var f;
+		
+			var results = new Array();
+			//here we would call another func to get us the top 6 results based on search query
+							
+			//use dummy data for now
+			if(str=='c'){
+				numResults=6;
+				a = {name: "Casey Win", link: 'link0.com', img: 'mockUser.jpg'};
+				b = {name: "Caster Magic", link: 'link1.com', img: 'mockUser.jpg'};
+				c = {name: "Chris Le", link: 'link2.com', img: 'mockUser.jpg'};
+				d = {name: "Chris Nguyen", link: 'link3.com', img: 'mockUser.jpg'};
+				e = {name: "Chris Zhao", link: 'link4.com', img: 'mockUser.jpg'};
+				f = {name: "Christine Shieh", link: 'link5.com', img: 'mockUser.jpg'};
+			} else if(str=='co'){
+				numResults=6;
+				a = {name: 'Cob Candy', link: 'link0.com', img: 'mockUser.jpg'};
+				b = {name: 'Coddy Vasquez', link: 'link1.com', img: 'mockUser.jpg'};
+				c = {name: 'Commander Shepard', link: 'link2.com', img: 'shepard.jpg'};
+				d = {name: 'Connor Lemos', link: 'javascript: showup()', img: 'connor.png'};
+				e = {name: 'Copper Smith', link: 'link4.com', img: 'mockUser.jpg'};
+				f = {name: 'Cosmo Poly', link: 'link5.com', img: 'mockUser.jpg'};	
+			} else if(str=='con'){
+				numResults=3;
+				a = {name: 'Condolisa Lemon', link: 'link0.com', img: 'mockUser.jpg'};
+				b = {name: 'Connor Lemos', link: 'javascript: showup()', img: 'connor.png'};
+				c = {name: 'Conton Lent', link: 'link2.com', img: 'mockUser.jpg'};
+				
+			} else if((str=='conn')||(str=='conno')||(str=='connor')){
+				numResults=1;
+				a = {name: 'Connor Lemos', link: 'javascript: showup()', img: 'connor.png'};
+			}
+			results[0]=a;
+			results[1]=b;
+			results[2]=c;
+			results[3]=d;
+			results[4]=e;
+			results[5]=f;
+		
+			if (str.length==0){
+				document.getElementById("friendSearchResultBox").style.display = 'none';
+
+			} else {
+				document.getElementById("friendSearchResultBox").style.height = (numResults+1)*30 + 'px';
+				
+				//reset all the search divs (hide them all)
+				for(var x=0; x<6; x++){
+					var elem;
+					
+					if(x==0){elem="friendSearchResultDiv0";}
+					else if(x==1){elem="friendSearchResultDiv1";}
+					else if(x==2){elem="friendSearchResultDiv2";}
+					else if(x==3){elem="friendSearchResultDiv3";}
+					else if(x==4){elem="friendSearchResultDiv4";}
+					else if(x==5){elem="friendSearchResultDiv5";}
+					
+					document.getElementById(elem).style.display = 'none';
+				}
+				
+				//now only show the ones we need
+				for(var x=0; x<numResults; x++){
+					var elem;
+					var elemLink;
+					var elemImg;
+					var elemName;
+					
+					//setting up which elem to update this iteration
+					if(x==0)     {elem="friendSearchResultDiv0";elemLink="friendSearchResult0";elemImg="friendSearchImg0";elemName="friendName0";}
+					else if(x==1){elem="friendSearchResultDiv1";elemLink="friendSearchResult1";elemImg="friendSearchImg1";elemName="friendName1";}
+					else if(x==2){elem="friendSearchResultDiv2";elemLink="friendSearchResult2";elemImg="friendSearchImg2";elemName="friendName2";}
+					else if(x==3){elem="friendSearchResultDiv3";elemLink="friendSearchResult3";elemImg="friendSearchImg3";elemName="friendName3";}
+					else if(x==4){elem="friendSearchResultDiv4";elemLink="friendSearchResult4";elemImg="friendSearchImg4";elemName="friendName4";}
+					else if(x==5){elem="friendSearchResultDiv5";elemLink="friendSearchResult5";elemImg="friendSearchImg5";elemName="friendName5";}
+					
+					//fetch a result from the resultHolder and update the element with result's info
+					document.getElementById(elemLink).href = results[x]['link'];
+					document.getElementById(elemName).innerHTML = results[x]['name'];
+					document.getElementById(elemImg).src = results[x]['img'];
+					document.getElementById(elem).style.display = 'block';
+				}
+				
+				document.getElementById("friendSearchResultBox").style.display = 'block';
+				document.getElementById("seeMoreResults").innerHTML = "See more results for " + str;
+				document.getElementById("seeMoreResults").href = "google.com";
+			}
+		}
+		</script>
+		
+				
+			<div id="googleMap">
+				<div id="leftmap">
+					<!-- The search box -->
+					<form action="">
+						<input type="text" id="friendSearchTxt" placeholder="Search for friends to shop with!" autocomplete="off" class="input-xlarge search-query" onkeyup="searchSuggest(this.value)">
+					</form>
+					
+					<!-- The search results box that pops up after you type in search box-->
+					<div id="friendSearchResultBox" style="display:none">
+						<div class="friendSearchResult" id="friendSearchResultDiv0" style="background:white" onmouseover="this.style.background='mediumseagreen';" onmouseout="this.style.background='white';">  
+							<a href="0" id="friendSearchResult0" style="display:block;text-decoration:none"><img src="Hong.jpg" height="25" width="25" class="img-square" id="friendSearchImg0"><font id="friendName0" style="padding: 0px 0px 0px 10px;" color='dimgray'>  </font></a>
+						</div>
+						<div class="friendSearchResult" id="friendSearchResultDiv1" style="background:white" onmouseover="this.style.background='mediumseagreen';" onmouseout="this.style.background='white';">  
+							<a href="1" id="friendSearchResult1" style="display:block;text-decoration:none"><img src="Hong.jpg" height="25" width="25" class="img-square" id="friendSearchImg1"><font id="friendName1" style="padding: 0px 0px 0px 10px;" color='dimgray'>  </font></a>
+						</div>
+						<div class="friendSearchResult" id="friendSearchResultDiv2" style="background:white" onmouseover="this.style.background='mediumseagreen';" onmouseout="this.style.background='white';">  
+							<a href="2" id="friendSearchResult2" style="display:block;text-decoration:none"><img src="Hong.jpg" height="25" width="25" class="img-square" id="friendSearchImg2"><font id="friendName2" style="padding: 0px 0px 0px 10px;" color='dimgray'>  </font></a>
+						</div>
+						<div class="friendSearchResult" id="friendSearchResultDiv3" style="background:white" onmouseover="this.style.background='mediumseagreen';" onmouseout="this.style.background='white';">  
+							<a href="3" id="friendSearchResult3" style="display:block;text-decoration:none"><img src="Hong.jpg" height="25" width="25" class="img-square" id="friendSearchImg3"><font id="friendName3" style="padding: 0px 0px 0px 10px;" color='dimgray'>  </font></a>
+						</div>
+						<div class="friendSearchResult" id="friendSearchResultDiv4" style="background:white" onmouseover="this.style.background='mediumseagreen';" onmouseout="this.style.background='white';">  
+							<a href="4" id="friendSearchResult4" style="display:block;text-decoration:none"><img src="Hong.jpg" height="25" width="25" class="img-square" id="friendSearchImg4"><font id="friendName4" style="padding: 0px 0px 0px 10px;" color='dimgray'>  </font></a>
+						</div>
+						<div class="friendSearchResult" id="friendSearchResultDiv5" style="background:white" onmouseover="this.style.background='mediumseagreen';" onmouseout="this.style.background='white';">  
+							<a href="5" id="friendSearchResult5" style="display:block;text-decoration:none"><img src="Hong.jpg" height="25" width="25" class="img-square" id="friendSearchImg5"><font id="friendName5" style="padding: 0px 0px 0px 10px;" color='dimgray'> </font></a>
+						</div>
+						<div class="friendSearchResult" style="background:white" onmouseover="this.style.background='mediumseagreen';" onmouseout="this.style.background='white';">  
+							<a href="#" id="seeMoreResults" style="display:block;text-decoration:none"><font color='dimgray'>  </font></a>
+						</div>
+					</div>
+				
+						<!--the google map-->
+					<div>
+						<iframe width="495" height="498" frameborder="0" id="googleMapIframe" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps/ms?msa=0&amp;msid=216349490590714669370.0004cdb3eea38d4990f44&amp;ie=UTF8&amp;t=m&amp;ll=37.8653,-122.257876&amp;spn=0.011858,0.018239&amp;z=15&amp;output=embed"></iframe><br/>
+						<small>View <a href="https://maps.google.com/maps/ms?msa=0&amp;msid=216349490590714669370.0004cdb3eea38d4990f44&amp;ie=UTF8&amp;t=m&amp;ll=37.8653,-122.257876&amp;spn=0.011858,0.018239&amp;z=15&amp;source=embed" style="color:#0000FF;text-align:left">your nearby friends 1</a> in a larger map</small>
+					</div>
+				</div>
+			
+				<!--the friend box-->
+				<div id="friendSection">
+					<div class="friend" id="friend0"><a href="#" style="text-decoration:none"><img src="adib.png" height="50" width="50" class="img-square"><b> Adib Kashem </b></a></div>
+					<div class="friend" id="friend1"><a href="#" style="text-decoration:none"><img src="adib.png" height="50" width="50" class="img-square"><b> Alita Poo </b></div>
+					<div class="friend" id="friend2"><a href="#" style="text-decoration:none"><img src="adib.png" height="50" width="50" class="img-square"><b> Claire Rity </b></div>
+					<div class="friend" id="friend3"><a href="#" style="text-decoration:none"><img src="connor.png" height="50" width="50" class="img-square"><b> Connor Lemos </b></div>
+					<div class="friend" id="friend3"><a href="#" style="text-decoration:none"><img src="triman.png" height="50" width="50" class="img-square"><b> Triman Nguyen </b></div>
+					<div class="friend" id="friend4"><a href="#" style="text-decoration:none"><img src="yang.png" height="50" width="50" class="img-square"><b> Yang Zhao </b></div>
+				</div>
+			</div>
+			
+		<div>
+			<p class="copyright">Copyright &copy 2012 TeamAwesome. All rights reserved.</p>
+		</div>
+    </body>
+
+    	<script type="text/javascript" src="js/main.js"></script>
+    	<script type="text/javascript" src="js/friends.js"></script>
+    	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+    	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Groceroo: Social Grocery Shopping!</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css">
+	<link rel="stylesheet" type="text/css" href="css/friends.css">
+	<link rel="stylesheet" type="text/css" href="css/docs.css">
+	<link rel="stylesheet" type="text/css" href="css/ui.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<style type="text/css">
+		.pagination li a {
+			position: relative;
+			top: -20px;
+			z-index: 100;
+		}
+	</style>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/slides.min.jquery.js"></script>
+	<script>
+		$(function(){
+			$('#slides').slides({
+				preload: true,
+				preloadImage: 'img/loading.gif',
+				play: 4000,
+				pause: 2500,
+				hoverPause: true,
+				animationStart: function(current){
+					$('.caption').animate({
+						bottom:-35
+					},100);
+					if (window.console && console.log) {
+						// example return of current slide number
+						console.log('animationStart on slide: ', current);
+					};
+				},
+				animationComplete: function(current){
+					$('.caption').animate({
+						bottom:0
+					},200);
+					if (window.console && console.log) {
+						// example return of current slide number
+						console.log('animationComplete on slide: ', current);
+					};
+				},
+				slidesLoaded: function() {
+					$('.caption').animate({
+						bottom:0
+					},200);
+				}
+			});
+		});
+	</script>
+
+	<style type="text/css">
+
+		#user {
+			padding-left: 40px;
+			font-size: 17px;
+		}
+		#sign_main {
+			width:880px;
+			height:339px;
+			top: 40px;
+			background-color: rgba(225,225,225,0.85);
+			border-radius: 6px;
+			box-shadow: 0 0 10px rgb(50,50,50);
+			margin:0 auto;
+			position:relative;
+			z-index:0;
+		}
+
+		#left_intro {
+			width: 566px;
+			height: 343px;
+			position: relative;
+			float: left;
+			border-radius: 6px;
+		}
+		#right_sign {
+			position: relative;
+			float: left;
+			padding: 13px;
+		}
+		#right_sign a {
+			text-decoration: none;
+			color: white;
+			text-shadow: 0px 1px 3px green;
+		}
+
+		.signmid {
+			width: 270px;
+			margin-top: 3px;
+		}
+
+		#signup {
+			margin-top: 5px;
+			margin-right: 5px;
+			float: right;
+		}
+		#slides {
+			position:relative;
+			top:12px;
+			left: 12px;
+			z-index:100;
+			border-radius: 6px;
+		}
+		.slides_container {
+			width: 540px;
+			height: 315px;
+			position:relative;
+			border-radius: 6px;
+		}
+		.slides_container div.slide {
+			width:940px;
+			height:360px;
+			display:block;
+			border-radius: 6px;
+		}
+		#slides .next, #slides .prev {
+			position:absolute;
+			top:287px;
+			right:100px;
+			width:23px;
+			height:23px;
+			border-radius: 15px;
+			box-shadow: 0 0 5px black;
+			display:block;
+			z-index:101;
+		}
+
+		#slides .next {
+			left:500px;
+		}
+
+		.pagination {
+			position: relative;
+			margin: 15px auto 0;
+			width:100px;
+			top: -13px;
+			z-index: 1px;
+		}
+
+		.pagination li {
+			float:left;
+			margin:0 1px;
+			list-style:none;
+		}
+
+		.pagination li a {
+			display:block;
+			width:12px;
+			height:0;
+			padding-top:12px;
+			background-image:url(img/pagination.png);
+			background-position:0 0;
+			float:left;
+			overflow:hidden;
+		}
+
+		.pagination li.current a {
+			background-position:0 -12px;
+		}
+
+		h3 {
+			text-shadow: 0 0 0.1em #0ab521;
+		}
+
+		h4 {
+			color: rgb(50,150,50);
+			text-shadow: 0 0 0.3em white;
+		}
+	</style>
+</head>
+
+<body>
+    <div><img id="back" src="groceries4-2.jpg"></div>
+	
+	<nav id="navibar" class="pretty navbar">
+  		<h1 class="logo"><a href="#"><img id="logo" src="logo.png"></a></h1>
+  		<ul>
+		    <li><a href="home.html">Home</a></li>
+		    <li><a href="friends.html">Friends</a></li>
+		    <li><a href="calendar.html">Calendar</a></li>
+		    <li><a href="finddeals.html">Find Deals</a></li>
+		    <div id="user"><a href="home.html">Sign in</a></div>
+  		</ul>
+	</nav>
+
+	<div id="sign_main">
+		<div id="left_intro">
+			<div id="slides">
+		    	<div class="slides_container">
+					<div class="slide">
+						<a title="1" target="_blank"><img src="img/2.jpg" width="540" height="360" alt="Slide 1"></a>
+					</div>
+                    
+					<div class="slide">
+						<a title="2" target="_blank"><img src="img/3.jpg" width="540" height="360" alt="Slide 2"></a>
+					</div>
+                    
+                    <div class="slide">
+						<a title="3" target="_blank"><img src="img/1.jpg" width="540" height="360" alt="Slide 3"></a>
+					</div>
+                </div>
+		        <a href="#" class="prev"><img src="img/arrow-prev.png" width="23" height="23" alt="Arrow Prev"></a>
+				<a href="#" class="next"><img src="img/arrow-next.png" width="23" height="23" alt="Arrow Next"></a> 
+			</div>
+		</div>
+		
+		<div id="right_sign">
+			<h3>Welcome to Groceroo</h3>
+			<h5 style="position: absolute;top: 50px;">The future of grocrery shopping, today.</h5><br>
+			<h4>Sign Up</h4>
+			<form>
+				<input class="signmid" type="text" name="NAME" placeholder="full name"><br>
+				<input class="signmid" type="text" name="emailaddress" placeholder="email address"> <br>
+				<input class="signmid" type="password" placeholder="password (at least 8 digits)"> <br>
+				<a href="home.html"><button id="signup" class="btn btn-success" type="button">Sign up for Groceroo </submit> </a>
+			</form>
+		</div>
+	</div>
+
+	<div>
+		<p class="copyright">Copyright &copy 2012 TeamAwesome. All rights reserved.</p>
+	</div>
+    </body>
+</html>

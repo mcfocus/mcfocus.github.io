@@ -1,0 +1,545 @@
+body {
+    background-color: rgb(25,25,25);
+    padding: 0px;
+    margin: 0px;
+    /* set the min-width for non-mobile now*/
+    min-width: 600px;
+}
+
+#yang {
+    width: 100vw;
+    height: 50vh;
+}
+
+
+#homeHeader {
+    border-width: 0px;
+}
+
+.introduction {
+    width: 1000px;
+    position: relative;
+    text-align: left;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 150px;
+}
+
+.introduction-text {
+    width: 700px;
+    position: relative;
+    float: left;
+    color: rgb(140,140,140);
+    line-height:2em;
+    font-family: SourceSansProLight;
+    font-size: 24px;
+    margin-left: 70px;
+}
+
+.introduction-text em {
+    color: #BEC4CC;
+    font-style: normal;
+    font-size: 45px;
+    line-height: 2.8em;
+    font-family: SourceSansProRegular;
+}
+
+#datouzhao {
+    width: 177px;
+    height: 177px;
+    margin-top: 40px;
+    margin-bottom: 70px;
+    border-radius: 100px;
+    margin-left: 0;
+    float: left;
+
+    transition-property:transform;
+    transition-duration:.4s;
+}
+
+#datouzhao:hover {
+    transform: scale(1.08,1.08) rotate(5deg);
+    -ms-transform: scale(1.08,1.08) rotate(5deg);
+    -webkit-transform: scale(1.08,1.08) rotate(5deg);
+}
+
+#datouzhao img {
+    width: 100%;
+    opacity: .80;
+}
+
+
+/* works section in homepage*/
+
+#works {
+    display: none;
+    margin-top: 48px;
+    width: 100%;
+    height: 100px;
+
+}
+
+.page-works {
+    width: 25vw;
+    height: 25vw;
+    float: left;
+    min-width: 150px;
+    min-height: 150px;
+}
+
+.works-thumbnail {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.works-thumbnail img {
+    width: auto;
+    height: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* the detailed pages */
+
+.loading {
+    position: relative;
+    width: 128px;
+    height: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+.Hidden {
+    display: none;
+}
+
+.preHidden {
+    display: none;
+}
+
+.header {
+	width: 95%;
+	max-width: 1000px;
+	padding: 10px 30px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: SourceSansProLight, Helvetica;
+
+	height: 34px;
+	border: 1px solid rgb(53,53,53);
+	border-top-width: 0px;
+}
+
+#yangzhao {
+	position: relative;
+	top: 5px;
+	float: left;
+	color: #BEC4CC;
+	font-size: 24px;
+}
+
+#yangzhao em {
+	font-style: normal;
+	font-size: 22px;
+	color: rgb(133,133,133);
+	margin-left: 20px;
+}
+
+
+#section-button {
+	position: relative;
+	float: right;
+	margin-top: 22px;
+	text-align: center;
+    outline: none;
+}
+
+.homepage-buttons {
+	width: 129px;
+	padding: 8px 10px;
+	background-color: rgb(25,25,25);
+	border: 1px solid rgb(53,53,53);
+	color: rgb(133,133,133);
+	margin: -3px;
+	margin-top: 5px;
+	font-family: SourceSansProLight, Helvetica;
+	font-size: 16px;
+    outline: none;
+}
+
+.borderless-btn {
+    border-width: 0px;
+}
+
+#download-resume {
+    width: 258px;
+}
+
+.homepage-buttons:hover {
+	cursor: pointer;
+	position: relative;
+}
+
+.container {
+	width: 95%;
+	max-width: 1000px;
+
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 100px;
+
+	font-size: 18px;
+	color: rgb(175,175,175);
+	font-family: SourceSansProLight, Helvetica;
+	line-height: 1.5em;
+
+	border: 1px solid rgb(53,53,53);
+	border-top-width: 0px;
+	padding: 30px;
+}
+
+.metabar {
+	text-align: center;
+	margin-top: 55px;
+}
+
+h2 {
+	color: #BEC4CC;
+	font-size: 2em;
+}
+
+.metabar em {
+	font-style: normal;
+	line-height: 1.8em;
+    color: rgb(115,115,115);
+}
+
+.description {
+	margin-top: 30px;
+	border-top: 1px solid rgb(53,53,53);
+}
+
+
+.link-buttons{
+	text-decoration: none;
+}
+
+.link-buttons a{
+	color: #BEC4CC;
+	text-decoration: none;
+}
+
+.link-buttons a:hover{
+	color: rgb(250,250,250);
+	text-decoration: none;
+}
+
+p a{
+	color: inherit;
+	text-decoration: none;
+}
+
+.link-text {
+    font-family: SourceSansProExtraLightItalic;
+}
+
+p a:hover{
+	color: rgb(250,250,250);
+    text-decoration: none;
+}
+
+p {
+	text-align: left;
+}
+
+p em {
+	font-size: 1.25em;
+	font-style: normal;
+}
+
+
+
+
+
+
+
+/* resume page */
+
+
+.detail {
+	margin-top: 20px;
+	border-top: 1px solid rgb(53,53,53);
+}
+
+.detail img{
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.detail-header {
+	font-size: 1.5em;
+    color: rgb(115,115,115);
+}
+
+.detail-header2 {
+    color: rgb(125,125,125);
+}
+
+.indent {
+    padding-left: 6%;
+    line-height: 1.8em;
+}
+
+.indent2 {
+    padding-left: 4%;
+}
+
+#author {
+	margin-top: 100px;
+	margin-bottom: 60px;
+	color: rgb(115,115,115);
+	text-align: center;
+	font-size: 15px;
+	font-family: SourceSansProLight, Helvetica;
+}
+
+
+.resume-container {
+    width: 100%;
+}
+
+.resume-title {
+    margin-top: 20px;
+    border-bottom: 1px solid rgb(53,53,53);
+    padding-bottom: 10px;
+    font-size: 1.4em;
+    color: rgb(115,115,115);
+    clear: both;
+}
+
+.clear-title {
+    border: 0px;
+    width: 100%;
+}
+
+.resume-leftside {
+    float: left;
+    width: 17%;
+    padding-right: 3%;
+}
+
+.resume-leftside p {
+    text-align: right;
+    font-family: SourceSansProExtraLight;
+}
+
+.resume-rightside {
+    float: left;
+    clear: right;
+    width: 75%;
+}
+
+.text-big {
+    font-size: 1em;
+    font-family: SourceSansProRegular;
+    color: #BEC4CC;
+}
+
+.text-big b {
+    margin-left: 15px;
+    font-family: SourceSansProExtraLight;
+}
+
+.text-small {
+    font-size: .9em;
+    font-family: SourceSansProExtraLight;
+}
+
+.resume-link:hover {
+    text-decoration: none;
+    color: rgb(250,250,250);
+}
+
+
+
+
+
+.iphone-background {
+    width: 400px;
+    height: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    background-size: cover;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Generated by Font Squirrel (http://www.fontsquirrel.com) on January 12, 2013 11:04:04 AM America/New_York */
+
+
+
+@font-face {
+    font-family: 'SourceSansProSemiboldItalic';
+    src: url('fonts/SourceSansPro-SemiboldIt-webfont.eot');
+    src: url('fonts/SourceSansPro-SemiboldIt-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/SourceSansPro-SemiboldIt-webfont.woff') format('woff'),
+         url('fonts/SourceSansPro-SemiboldIt-webfont.ttf') format('truetype'),
+         url('fonts/SourceSansPro-SemiboldIt-webfont.svg#SourceSansProSemiboldItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'SourceSansProBold';
+    src: url('fonts/SourceSansPro-Bold-webfont.eot');
+    src: url('fonts/SourceSansPro-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/SourceSansPro-Bold-webfont.woff') format('woff'),
+         url('fonts/SourceSansPro-Bold-webfont.ttf') format('truetype'),
+         url('fonts/SourceSansPro-Bold-webfont.svg#SourceSansProBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'SourceSansProBoldItalic';
+    src: url('fonts/SourceSansPro-BoldIt-webfont.eot');
+    src: url('fonts/SourceSansPro-BoldIt-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/SourceSansPro-BoldIt-webfont.woff') format('woff'),
+         url('fonts/SourceSansPro-BoldIt-webfont.ttf') format('truetype'),
+         url('fonts/SourceSansPro-BoldIt-webfont.svg#SourceSansProBoldItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'SourceSansProBlack';
+    src: url('fonts/SourceSansPro-Black-webfont.eot');
+    src: url('fonts/SourceSansPro-Black-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/SourceSansPro-Black-webfont.woff') format('woff'),
+         url('fonts/SourceSansPro-Black-webfont.ttf') format('truetype'),
+         url('fonts/SourceSansPro-Black-webfont.svg#SourceSansProBlack') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'SourceSansProBlackItalic';
+    src: url('fonts/SourceSansPro-BlackIt-webfont.eot');
+    src: url('fonts/SourceSansPro-BlackIt-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/SourceSansPro-BlackIt-webfont.woff') format('woff'),
+         url('fonts/SourceSansPro-BlackIt-webfont.ttf') format('truetype'),
+         url('fonts/SourceSansPro-BlackIt-webfont.svg#SourceSansProBlackItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'SourceSansProExtraLight';
+    src: url('fonts/SourceSansPro-ExtraLight-webfont.eot');
+    src: url('fonts/SourceSansPro-ExtraLight-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/SourceSansPro-ExtraLight-webfont.woff') format('woff'),
+         url('fonts/SourceSansPro-ExtraLight-webfont.ttf') format('truetype'),
+         url('fonts/SourceSansPro-ExtraLight-webfont.svg#SourceSansProExtraLight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'SourceSansProExtraLightItalic';
+    src: url('fonts/SourceSansPro-ExtraLightIt-webfont.eot');
+    src: url('fonts/SourceSansPro-ExtraLightIt-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/SourceSansPro-ExtraLightIt-webfont.woff') format('woff'),
+         url('fonts/SourceSansPro-ExtraLightIt-webfont.ttf') format('truetype'),
+         url('fonts/SourceSansPro-ExtraLightIt-webfont.svg#SourceSansProExtraLightItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'SourceSansProLight';
+    src: url('fonts/SourceSansPro-Light-webfont.eot');
+    src: url('fonts/SourceSansPro-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/SourceSansPro-Light-webfont.woff') format('woff'),
+         url('fonts/SourceSansPro-Light-webfont.ttf') format('truetype'),
+         url('fonts/SourceSansPro-Light-webfont.svg#SourceSansProLight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'SourceSansProRegular';
+    src: url('fonts/SourceSansPro-Regular-webfont.eot');
+    src: url('fonts/SourceSansPro-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/SourceSansPro-Regular-webfont.woff') format('woff'),
+         url('fonts/SourceSansPro-Regular-webfont.ttf') format('truetype'),
+         url('fonts/SourceSansPro-Regular-webfont.svg#SourceSansProRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'SourceSansProItalic';
+    src: url('fonts/SourceSansPro-It-webfont.eot');
+    src: url('fonts/SourceSansPro-It-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/SourceSansPro-It-webfont.woff') format('woff'),
+         url('fonts/SourceSansPro-It-webfont.ttf') format('truetype'),
+         url('fonts/SourceSansPro-It-webfont.svg#SourceSansProItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'SourceSansProSemibold';
+    src: url('fonts/SourceSansPro-Semibold-webfont.eot');
+    src: url('fonts/SourceSansPro-Semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/SourceSansPro-Semibold-webfont.woff') format('woff'),
+         url('fonts/SourceSansPro-Semibold-webfont.ttf') format('truetype'),
+         url('fonts/SourceSansPro-Semibold-webfont.svg#SourceSansProSemibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+	font-family:'CustomSceneLight';
+	src:url("fonts/scenepro-light-webfont-d19e248a217d28d32868a2c0389d138c.woff") format("woff"),
+		url("fonts/scenepro-light-webfont-42e656c621daaf624609d1075dd22939.ttf") format("truetype");
+}
+
+@font-face {
+	font-family:'CustomSceneRegular';
+	src:url("fonts/scenepro-regular-webfont-cbd0ac035f2aab4fe46752f5d21a4ffe.woff") format("woff"),
+		url("fonts/scenepro-regular-webfont-5528f454ec4f265abdab4f4b22f0bd59.ttf") format("truetype");
+}

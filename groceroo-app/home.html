@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<!-- TODO: 
+	1. move css thats index specific from main.css to index.css
+
+
+
+-->
+	<title>Groceroo: Social Grocery Shopping!</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css">
+	<link rel="stylesheet" type="text/css" href="css/docs.css">
+	<link rel="stylesheet" type="text/css" href="css/ui.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+
+<body>
+    <div><img id="back" src="groceries4-2.jpg"></div>
+	
+	<nav id="navibar" class="pretty navbar">
+  		<h1 class="logo"><a href="#"><img id="logo" src="logo.png"></a></h1>
+  		<ul>
+		    <li><a class="navbar-active" href="#">Home</a></li>
+		    <li><a href="friends.html">Friends</a></li>
+		    <li><a href="calendar.html">Calendar</a></li>
+		    <li><a href="finddeals.html">Find Deals</a></li>
+		    <div id="user"><img src="Hong.jpg" class="img-rounded" id="hong"><a href="index.html">Hong Le</a></div>
+  		</ul>
+	</nav>
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/bPopup.js"></script>
+		<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+		
+	<script>
+	var numLists = 0;
+	
+	/** The array that will hold all our lists.
+	 *	Holds: List objects of the form:
+	 *	{listname, storename, shoptime, things2buy}
+	 **/
+	var lists = [];
+	//testing
+	lists[0]= {listname:"Halloween", storename:"Safeway, Walgreens", shoptime:"10-30-2012", things2buy:"Pumpkin Seeds \nRed Cups \nO'Dhouls \nCandy \nDiet Shasta", type: 'self', notif: "2 friends have requested help! <a href=\"#\"> View </a>"};
+	lists[1]= {listname:"Club Party", storename:"Walgreens", shoptime:"11-30-2012", things2buy:"Steak \nSteak \nSteak \nSteak \nSteak ", type: 'shared', notif: "<a href=\"#\"> Yang Zhao </a> has agreed to help you with this list!"}; 
+	lists[2]= {listname:"Birthday", storename:"Walgreens", shoptime:"12-30-2012", things2buy:"Cake ", type: 'self', notif: "No help requests for this list."};
+	
+	
+	var currentList=-1;
+	function createNewList(type){ 
+		var shopList = document.createElement("li");
+		if(type=='self'){
+			shopList.innerHTML = "<a id=\"listitem"+ numLists+ "\" class=\"listitem\" href=\"javascript:changeList(" + numLists + ")\"><i class=\"icon-chevron-right\"></i> testesttest </a>";
+		} else if(type=='shared'){
+			shopList.innerHTML = "<a id=\"listitem"+ numLists+ "\" class=\"listitem\" href=\"javascript:changeList(" + numLists + ")\"><i class=\"icon-chevron-right\"></i> testesttest </a>";
+		}
+		var shopListBar = document.getElementById("sidebar");
+		shopListBar.appendChild(shopList);
+		numLists++;
+	}
+	
+	
+	function init(){
+		//Iterate throught the list array upon initial render to set up sidebar
+		for(var x=lists.length-1; x >=0; x--){
+			var shopList = document.createElement("li");
+			if(lists[x].type == 'self'){
+				shopList.innerHTML = "<a id=\"listitem"+ x+ "\" class=\"listitem\" href=\"javascript:changeList(" + x + ")\"><img src=\"img/green-arrow.png\" height=\"10\" width=\"10\"  ></img><i class=\"icon-chevron-right\"></i> "+ lists[x].listname +" </a>";
+			} else if(lists[x].type == 'shared'){
+				shopList.innerHTML = "<a id=\"listitem"+ x+ "\" class=\"listitem\" href=\"javascript:changeList(" + x + ")\"><img src=\"img/blue-arrow.png\" height=\"10\" width=\"10\"  ></img></i><i class=\"icon-share icon-chevron-right\"></i> "+ lists[x].listname +" </a>";
+			}
+			var shopListBar = document.getElementById("sidebar");
+			shopListBar.appendChild(shopList);
+			numLists++;
+			
+		}
+		
+	}
+	
+	function changeList(clickedList){
+
+		//set the old selected list to not active
+		document.getElementById('listitem'+ currentList).parentNode.setAttribute('class','');
+
+		//now do the new list
+		currentList = clickedList;
+		document.getElementById('listitem'+ currentList).parentNode.setAttribute('class','active')
+		
+		var name = document.getElementById('listname');
+		var store = document.getElementById('storename');
+		var time = document.getElementById('shoptime');
+		var items = document.getElementById('thingstobuy');
+		var notif = document.getElementById('listNotifications');
+
+		
+		if(clickedList>=0){		
+			var list = lists[clickedList];
+			name.value = list.listname;
+			store.value = list.storename;
+			time.value = list.shoptime;
+			items.value = list.things2buy;
+			notif.innerHTML = list.notif;
+		} else if(clickedList==-1){
+			name.value = "";
+			store.value ="";
+			time.value="";
+			items.value="";
+			notif.innerHTML="";
+		}
+	}
+	
+	function storeSuggest(str){
+
+		var testURL = "google.com";
+			var numResults=0; 
+			var a;
+			var b;
+			var c;
+			var d;
+			var e;
+			var f;
+		
+			var results = new Array();
+			//here we would call another func to get us the top results based on search query
+							
+			//use dummy data for now
+			if(str=='w'){
+				numResults=6;
+				a = {name: 'Walmart (Berkeley, CA ~ 0.2 mi)'};
+				b = {name: 'Walgreens (Berkeley, CA ~ 0.3 mi)'};
+				c = {name: 'WholeFud Market (Berkeley, CA ~ 0.5 mi)'};
+				d = {name: 'Walgreens (Richmond, CA ~ 1.0 mi)'};
+				e = {name: 'Wimpy Foods (Emeryville, CA ~ 1.1 mi)'};
+				f = {name: 'WilloStore (Oakland, CA ~ 1.3 mi)'};
+			} else if(str=='wa'){
+				numResults=3;
+				a = {name: 'Walmart (Berkeley, CA ~ 0.2 mi)'};
+				b = {name: 'Walgreens (Berkeley, CA ~ 0.3 mi)'};
+				c = {name: 'Walgreens (Richmond, CA ~ 1.0 mi)'};
+
+			} else if(str=='wal'){
+				numResults=3;
+				a = {name: 'Walmart (Berkeley, CA ~ 0.2 mi)'};
+				b = {name: 'Walgreens (Berkeley, CA ~ 0.3 mi)'};
+				c = {name: 'Walgreens (Richmond, CA ~ 1.0 mi)'};
+				
+			} else if((str=='walg')||(str=='walgr')||(str=='walgre')||(str=='walgree')||(str=='walgreen')||(str=='walgreens')){
+				numResults=2;
+				a = {name: 'Walgreens (Berkeley, CA ~ 0.3 mi)'};
+				b = {name: 'Walgreens (Richmond, CA ~ 1.0 mi)'};
+			}
+			
+			//mannually set the results for now
+			results[0]=a;
+			results[1]=b;
+			results[2]=c;
+			results[3]=d;
+			results[4]=e;
+			results[5]=f;
+			
+			if (str.length==0){
+				document.getElementById("storeSearchResultBox").style.display = 'none';
+
+			} else {
+				//document.getElementById("storeSearchResultBox").style.height = (numResults+1)*30 + 'px';
+				
+				//reset all the search divs (hide them all)
+				for(var x=0; x<6; x++){
+					var elem;
+					
+					if(x==0){elem="storeSearchResultDiv0";}
+					else if(x==1){elem="storeSearchResultDiv1";}
+					else if(x==2){elem="storeSearchResultDiv2";}
+					else if(x==3){elem="storeSearchResultDiv3";}
+					else if(x==4){elem="storeSearchResultDiv4";}
+					else if(x==5){elem="storeSearchResultDiv5";}
+					
+					document.getElementById(elem).style.display = 'none';
+				}
+				
+				//now only show the ones we need
+				for(var x=0; x<numResults; x++){
+					var elem;
+					var elemName;
+					
+					//setting up which elem to update this iteration
+					if(x==0)     {elem="storeSearchResultDiv0";elemName="storeName0";}
+					else if(x==1){elem="storeSearchResultDiv1";elemName="storeName1";}
+					else if(x==2){elem="storeSearchResultDiv2";elemName="storeName2";}
+					else if(x==3){elem="storeSearchResultDiv3";elemName="storeName3";}
+					else if(x==4){elem="storeSearchResultDiv4";elemName="storeName4";}
+					else if(x==5){elem="storeSearchResultDiv5";elemName="storeName5";}
+					
+					//fetch a result from the resultHolder and update the element with result's info
+					document.getElementById(elemName).innerHTML = results[x]['name'];
+					document.getElementById(elem).style.display = 'block';
+				}
+				
+				//set up the "see more results" line
+				document.getElementById("storeSearchResultBox").style.display = 'block';
+				document.getElementById("seeMoreStoreResults").innerHTML = "See more results for " + str;
+				document.getElementById("seeMoreStoreResults").href = "https://www.google.com/search?q="+str;
+			}
+	}
+	
+	function setStoreValue( val){
+		document.getElementById("storename").value = val;
+		document.getElementById("storeSearchResultBox").style.display = 'none';
+	
+	}
+	$(function(){
+			window.prettyPrint && prettyPrint();
+			$('#shoptime').datepicker({
+				format: 'mm-dd-yyyy'
+			});
+		});
+	</script>
+	
+	<!--The body under the navigation bar-->
+	<div id="main">
+		<!-- The sidebar showing all current shopping list -->
+		<div id="left">
+				<ul class="nav nav-list bs-docs-sidenav" id="sidebar">
+					<li><a id="listhead">My Shopping Lists</a></li>
+					<li class="active"><a id="listitem-1" class="listitem" href="javascript:changeList(-1)"><i class="icon-plus"></i> NEW </a></li>
+				</ul>
+		</div>
+		
+		<div id="middleright">
+		<!-- The big board for creating a shopping list -->
+			<div id="board">
+				<div id="note">
+					<form id="formBody">
+						<input id="listname" type="text" name="listname" placeholder="Title of this shopping list" ><br>
+						
+					<div  id="storenameDiv" >
+						<input id="storename" type="text" name="storename" onkeyup="storeSuggest(this.value)" placeholder="Stores you are going to (optional):">
+					</div>
+						<!-- store search suggest -->
+						<div id="storeSearchResultBox" style="display:none">
+							<div class="storeSearchResult" id="storeSearchResultDiv0" style="background:white"   onmouseover="this.style.background='mediumseagreen';" onmouseout="this.style.background='white';" >
+								<font id="storeName0" onclick="setStoreValue(this.innerHTML)" style="padding: 0px 0px 0px 10px;" color='dimgray'> t </font>
+							</div>
+							<div class="storeSearchResult" id="storeSearchResultDiv1" style="background:white" onmouseover="this.style.background='mediumseagreen';" onmouseout="this.style.background='white';">
+								<font id="storeName1" onclick="setStoreValue(this.innerHTML)" style="padding: 0px 0px 0px 10px;" color='dimgray'> t </font>
+							</div>
+							<div class="storeSearchResult" id="storeSearchResultDiv2" style="background:white" onmouseover="this.style.background='mediumseagreen';" onmouseout="this.style.background='white';">
+								<font id="storeName2" onclick="setStoreValue(this.innerHTML)" style="padding: 0px 0px 0px 10px;" color='dimgray'> t </font>
+							</div>
+							<div class="storeSearchResult" id="storeSearchResultDiv3" style="background:white" onmouseover="this.style.background='mediumseagreen';" onmouseout="this.style.background='white';">
+								<font id="storeName3" onclick="setStoreValue(this.innerHTML)" style="padding: 0px 0px 0px 10px;" color='dimgray'> t </font>
+							</div>
+							<div class="storeSearchResult" id="storeSearchResultDiv4" style="background:white" onmouseover="this.style.background='mediumseagreen';" onmouseout="this.style.background='white';">
+								<font id="storeName4" onclick="setStoreValue(this.innerHTML)" style="padding: 0px 0px 0px 10px;" color='dimgray'> t </font>
+							</div>
+							<div class="storeSearchResult" id="storeSearchResultDiv5" style="background:white" onmouseover="this.style.background='mediumseagreen';" onmouseout="this.style.background='white';">
+								<font id="storeName5" onclick="setStoreValue(this.innerHTML)" style="padding: 0px 0px 0px 10px;" color='dimgray'> t </font>
+							</div>
+							<div class="storeSearchResult" style="background:white" onmouseover="this.style.background='mediumseagreen';" onmouseout="this.style.background='white';">  
+								<a href="#" id="seeMoreStoreResults" style="display:block;text-decoration:none"><font color='dimgray'>  </font></a>
+							</div>
+						</div>
+						
+						<div id="shoptimeDiv" class="input-append date">
+							<input id="shoptime" type="text" name="shoptime" placeholder="Shop by (optional):" value=""><br>
+						</div>
+						<br><textarea id="thingstobuy" name="thingstobuy" placeholder="Things you want to buy are:"></textarea>
+						
+						<div id="listNotifications">
+							
+						</div>
+						
+						<div id="shareTypeButtons">
+							<input id="myself" type="radio" name="method" value="myself" checked>  Shop myself
+							<input id="request" type="radio" name="method" value="request">  Request help
+						</div>
+						<div id="alert">
+							Please select "Shop myself" or "Request Help"
+						</div>
+						<div id="buttons">
+							<button class="btn" type="button" id="delete">Delete</button>
+							<button class="btn btn-success" type="button" id="submit">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<!-- Mock chat/newsfeed pic-->
+			<div id="right"><img src="chat.png"></div>
+		</div>
+	</div>
+
+	<div id="grey"></div>
+			
+	<div id="help">
+		<ul class="">
+			<center><h3><div id="helptext">Request help from...</div></h3></center>
+			<p><b>Select a group of friends:</b></p>
+			<label style="text-indent:35px" class="checkbox"><input type="checkbox" name="method" value="myself">  All</label>
+			<label style="text-indent:35px" class="checkbox"><input type="checkbox" name="method" value="request">  Family</label>
+			<label style="text-indent:35px" class="checkbox"><input type="checkbox" name="method" value="request">  South Side Neighbors</label>
+			<br><br>
+				
+			<p><b>Select friends individually:</b></p>
+				
+			<form action="">
+				<input style="width:493px" type="text" id="friendSearchTxt2" placeholder="Search for friends to shop with!" autocomplete="off" class="input-xlarge search-query" onkeyup="searchSuggest(this.value)">
+			</form>
+				
+			<div id="dummy_div"></div>
+
+			<div id="buttons2">
+				<button id="close" class="btn" type="button">Cancel</button>
+				<button id="submit2" class="btn btn-success" type="button">Send request</button>
+			</div>
+		</ul>
+		
+			<!-- The search results box that pops up after you type in search box-->
+			<div id="friendSearchResultBox2" style="display:none">
+				<div class="friendSearchResult" id="friendSearchResultDiv0" style="background:white" onmouseover="this.style.background='mediumseagreen';" onmouseout="this.style.background='white';">  
+					<img src="Hong.jpg" height="25" width="25" class="img-square" id="friendSearchImg0"><font id="friendName0" style="padding: 0px 0px 0px 10px;" color='dimgray'>  </font>
+				</div>
+				<div class="friendSearchResult" id="friendSearchResultDiv1" style="background:white" onmouseover="this.style.background='mediumseagreen';" onmouseout="this.style.background='white';">  
+					<a href="1" id="friendSearchResult1" style="display:block;text-decoration:none"><img src="Hong.jpg" height="25" width="25" class="img-square" id="friendSearchImg1"><font id="friendName1" style="padding: 0px 0px 0px 10px;" color='dimgray'>  </font></a>
+				</div>
+				<div class="friendSearchResult" id="friendSearchResultDiv2" style="background:white" onmouseover="this.style.background='mediumseagreen';" onmouseout="this.style.background='white';">  
+					<a href="2" id="friendSearchResult2" style="display:block;text-decoration:none"><img src="Hong.jpg" height="25" width="25" class="img-square" id="friendSearchImg2"><font id="friendName2" style="padding: 0px 0px 0px 10px;" color='dimgray'>  </font></a>
+				</div>
+				<div class="friendSearchResult" id="friendSearchResultDiv3" style="background:white" onmouseover="this.style.background='mediumseagreen';" onmouseout="this.style.background='white';">  
+					<a href="3" id="friendSearchResult3" style="display:block;text-decoration:none"><img src="Hong.jpg" height="25" width="25" class="img-square" id="friendSearchImg3"><font id="friendName3" style="padding: 0px 0px 0px 10px;" color='dimgray'>  </font></a>
+				</div>
+				<div class="friendSearchResult" id="friendSearchResultDiv4" style="background:white" onmouseover="this.style.background='mediumseagreen';" onmouseout="this.style.background='white';">  
+					<a href="4" id="friendSearchResult4" style="display:block;text-decoration:none"><img src="Hong.jpg" height="25" width="25" class="img-square" id="friendSearchImg4"><font id="friendName4" style="padding: 0px 0px 0px 10px;" color='dimgray'>  </font></a>
+				</div>
+				<div class="friendSearchResult" id="friendSearchResultDiv5" style="background:white" onmouseover="this.style.background='mediumseagreen';" onmouseout="this.style.background='white';">  
+					<a href="5" id="friendSearchResult5" style="display:block;text-decoration:none"><img src="Hong.jpg" height="25" width="25" class="img-square" id="friendSearchImg5"><font id="friendName5" style="padding: 0px 0px 0px 10px;" color='dimgray'> </font></a>
+				</div>
+				<div class="friendSearchResult" style="background:white" onmouseover="this.style.background='mediumseagreen';" onmouseout="this.style.background='white';">  
+					<a href="#" id="seeMoreResults" style="display:block;text-decoration:none"><font color='dimgray'>  </font></a>
+				</div>
+			</div>
+		
+		
+		
+		
+	</div>
+			
+		<!-- Script for searchbox mock -->
+		<script>
+		function searchSuggest(str){
+			var testURL = "google.com";
+			var numResults=0; //keeps track of how many results found; for now triman is setting this field manually to test stuff
+			var a;
+			var b;
+			var c;
+			var d;
+			var e;
+			var f;
+		
+			var results = new Array();
+			//here we would call another func to get us the top results based on search query
+							
+			//use dummy data for now
+			if(str=='c'){
+				numResults=6;
+				a = {name: "Casey Win", link: 'link0.com', img: 'mockUser.jpg'};
+				b = {name: "Caster Magic", link: 'link1.com', img: 'mockUser.jpg'};
+				c = {name: "Chris Le", link: 'link2.com', img: 'mockUser.jpg'};
+				d = {name: "Chris Nguyen", link: 'link3.com', img: 'mockUser.jpg'};
+				e = {name: "Chris Zhao", link: 'link4.com', img: 'mockUser.jpg'};
+				f = {name: "Christine Shieh", link: 'link5.com', img: 'mockUser.jpg'};
+			} else if(str=='co'){
+				numResults=6;
+				a = {name: 'Cob Candy', link: 'link0.com', img: 'mockUser.jpg'};
+				b = {name: 'Coddy Vasquez', link: 'link1.com', img: 'mockUser.jpg'};
+				c = {name: 'Commander Shepard', link: 'link2.com', img: 'shepard.jpg'};
+				d = {name: 'Connor Lemos', img: 'connor.png'};
+				e = {name: 'Copper Smith', link: 'link4.com', img: 'mockUser.jpg'};
+				f = {name: 'Cosmo Poly', link: 'link5.com', img: 'mockUser.jpg'};	
+			} else if(str=='con'){
+				numResults=3;
+				a = {name: 'Condolisa Lemon', link: 'link0.com', img: 'mockUser.jpg'};
+				b = {name: 'Connor Lemos', img: 'connor.png'};
+				c = {name: 'Conton Lent', link: 'link2.com', img: 'mockUser.jpg'};
+				
+			} else if((str=='conn')||(str=='conno')||(str=='connor')){
+				numResults=1;
+				a = {name: 'Connor Lemos', img: 'connor.png'};
+			}
+			
+			//mannually set the results for now
+			results[0]=a;
+			results[1]=b;
+			results[2]=c;
+			results[3]=d;
+			results[4]=e;
+			results[5]=f;
+		
+			if (str.length==0){
+				document.getElementById("friendSearchResultBox2").style.display = 'none';
+
+			} else {
+				document.getElementById("friendSearchResultBox2").style.height = (numResults+1)*30 + 'px';
+				
+				//reset all the search divs (hide them all)
+				for(var x=0; x<6; x++){
+					var elem;
+					
+					if(x==0){elem="friendSearchResultDiv0";}
+					else if(x==1){elem="friendSearchResultDiv1";}
+					else if(x==2){elem="friendSearchResultDiv2";}
+					else if(x==3){elem="friendSearchResultDiv3";}
+					else if(x==4){elem="friendSearchResultDiv4";}
+					else if(x==5){elem="friendSearchResultDiv5";}
+					
+					document.getElementById(elem).style.display = 'none';
+				}
+				
+				//now only show the ones we need
+				for(var x=0; x<numResults; x++){
+					var elem;
+					var elemLink;
+					var elemImg;
+					var elemName;
+					
+					//setting up which elem to update this iteration
+					if(x==0)     {elem="friendSearchResultDiv0";elemLink="friendSearchResult0";elemImg="friendSearchImg0";elemName="friendName0";}
+					else if(x==1){elem="friendSearchResultDiv1";elemLink="friendSearchResult1";elemImg="friendSearchImg1";elemName="friendName1";}
+					else if(x==2){elem="friendSearchResultDiv2";elemLink="friendSearchResult2";elemImg="friendSearchImg2";elemName="friendName2";}
+					else if(x==3){elem="friendSearchResultDiv3";elemLink="friendSearchResult3";elemImg="friendSearchImg3";elemName="friendName3";}
+					else if(x==4){elem="friendSearchResultDiv4";elemLink="friendSearchResult4";elemImg="friendSearchImg4";elemName="friendName4";}
+					else if(x==5){elem="friendSearchResultDiv5";elemLink="friendSearchResult5";elemImg="friendSearchImg5";elemName="friendName5";}
+					
+					//fetch a result from the resultHolder and update the element with result's info
+					document.getElementById(elemName).innerHTML = results[x]['name'];
+					document.getElementById(elemImg).src = results[x]['img'];
+					document.getElementById(elem).style.display = 'block';
+				}
+				
+				//set up the "see more results" line
+				document.getElementById("friendSearchResultBox2").style.display = 'block';
+				document.getElementById("seeMoreResults").innerHTML = "See more results for " + str;
+				document.getElementById("seeMoreResults").href = "https://www.google.com/search?q="+str;
+			}
+			
+		}
+		init();
+		</script>
+		
+		
+		
+		
+		<div>
+			<p class="copyright">Copyright &copy 2012 TeamAwesome. All rights reserved.</p>
+		</div>
+    </body>
+</html>

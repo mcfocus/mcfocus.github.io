@@ -1,0 +1,133 @@
+/*=====================================================
+
+   Navigation (with dropdowns)
+   	
+ ======================================================*/
+ 
+	
+	.navbar {
+		position: relative;
+		left: 89px;
+		margin-left: auto;
+    	margin-right: auto;
+		width: 905px;
+		display: table;
+		border: 1px solid #1d692d;
+		margin-bottom: 30px;
+		margin-top: 30px;
+		background: #5dbb73; /* Change this to suit the color theme of your site */
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	
+	.navbar .logo {
+		display: table-cell;
+		width: 220px;
+		margin: 0;
+		line-height: 0;
+		vertical-align: middle;
+	}
+	
+	.navbar a.toggle {
+	  display: none;
+	}
+	
+	.navbar ul {
+		display: table;
+		float: none;
+		vertical-align: middle;
+		margin-bottom: 0;
+	}
+	
+	.navbar ul li {
+		display: table-cell;
+		float: none;
+		width: 130px;
+		list-style-type: none;
+		margin-bottom: 0;
+		margin-left: 0;
+		text-align: center;
+		border-right: 1px solid #114a1e;
+	}
+	
+	.navbar > ul > li > a {
+		display: block;
+		height: 55px;
+		line-height: 55px;
+		font-size: 16px;
+		padding: 0 15px;
+		white-space: nowrap;
+		color: #fff;
+		text-shadow: 0 1px 2px #114a1e, 0 1px 0 #114a1e;
+		font-weight:bold;
+	}
+	
+	.navbar > ul > li .field {
+		position: relative;
+		display: inline-block;
+		text-align: center;
+	}
+	
+
+	.navbar > ul > li:hover > a {	
+		background: #225A24;/*#444444;  was #05390a */
+		z-index: 1000;
+	}
+	
+	}
+	
+	.navbar > ul > li > li > a {
+		padding: 0 33px;
+	}
+	
+	.navbar > ul > li:last-child, .navbar > ul > li:last-child a:hover {
+		border-right: none;
+	}
+	
+/******** Pretty Navbar Styles *********/
+	
+	.pretty.navbar {
+		border-radius: 4px;
+		
+		background: -moz-linear-gradient(top, #5dbb73 0%, #2d9047 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5dbb73), color-stop(100%,#2d9047)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, #5dbb73 0%,#2d9047 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, #5dbb73 0%,#2d9047 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top, #5dbb73 0%,#2d9047 100%); /* IE10+ */
+		background: linear-gradient(top, #5dbb73 0%,#2d9047 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5dbb73', endColorstr='#2d9047',GradientType=0 ); /* IE6-9 */
+		
+		-webkit-box-shadow: inset 0 1px 1px #94dda6,
+			0 1px 2px rgba(0,0,0,0.61) !important; /* Remove this line if you dont want a dropshadow on your navigation*/
+		box-shadow: inset 0 1px 1px #94dda6,
+					0 1px 2px rgba(0,0,0,0.61) !important; /* Remove this line if you dont want a dropshadow on your navigation*/
+	}
+	
+	.pretty.navbar li {
+		-webkit-box-shadow:
+			inset 1px 0 0 #94dda6;
+		box-shadow:
+			inset 1px 0 0 #94dda6;
+	}
+	
+	.pretty.navbar ul:first-child li:first-child a {
+		border-radius: 4px 0 0 4px;
+	}
+	
+	.pretty.navbar ul li:last-child a {
+		border-radius: 0 4px 4px 0;
+	}
+	
+	.pretty.navbar > ul > li:hover > a {
+		-webkit-box-shadow:	2px 0 0 #172017;
+		box-shadow: 2px 0 0 #172017;
+		text-decoration: none;
+
+	}
+	
+	.pretty.navbar > ul > li:first-child, .pretty.navbar > ul > li:first-child a:hover {	
+		box-shadow: none;
+	}
+	
